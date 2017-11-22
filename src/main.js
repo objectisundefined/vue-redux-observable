@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import 'rxjs'
 
 import store from './store'
 import Vuex, { Provider } from './store/vue-redux'
