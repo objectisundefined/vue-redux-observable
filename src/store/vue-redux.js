@@ -1,9 +1,9 @@
-let _Vue
+let Vue
 
-const install = Vue => {
-  _Vue = Vue
+const install = _Vue => {
+  Vue = _Vue
 
-  _Vue.mixin({
+  Vue.mixin({
     beforeCreate () {
       const options = this.$options
 
@@ -44,7 +44,7 @@ export const connect = (mapStateToProps, mapDispatchToProps) => component => {
   return {
     ...component,
     beforeCreate () {
-      vm = new _Vue({
+      vm = new Vue({
         data: () => {
           return mapStateToProps(this.$store.getState())
         }
@@ -66,7 +66,7 @@ export const connect = (mapStateToProps, mapDispatchToProps) => component => {
     },
     beforeDestroy () {
       vm._unsubscribe()
-      vm.$destroy(true)
+      vm.$destroy()
       vm = null
 
       component.beforeDestroy && component.beforeDestroy.call(this)
