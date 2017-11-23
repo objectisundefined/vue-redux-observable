@@ -1,6 +1,12 @@
 let Vue
 
 const install = _Vue => {
+  if (Vue && _Vue === Vue) {
+    console.error('[vuex] already installed. Vue.use(Vuex) should be called only once.')
+
+    return
+  }
+
   Vue = _Vue
 
   Vue.mixin({
